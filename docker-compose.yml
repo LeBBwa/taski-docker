@@ -7,7 +7,7 @@ volumes:
 
 services:
   db:
-    image: postgres:13
+    image: postgres
     env_file: .env
     volumes:
       - pg_data:/var/lib/postgresql/data
@@ -25,9 +25,9 @@ services:
       - static:/frontend_static
 
   gateway:
-    build: ./nginx/
+    build: ./gateway/
     env_file: .env
     volumes:
       - static:/staticfiles
     ports:
-      - 8088:8088
+      - 8088:80
